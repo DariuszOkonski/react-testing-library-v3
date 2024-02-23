@@ -35,3 +35,39 @@ test('checkbox flow', () => {
   fireEvent.click(checkboxElement);
   expect(buttonElement).toBeEnabled();
 });
+
+test('check if button is gray after disable', () => {
+  render(<App />);
+
+  const buttonElement = screen.getByRole('button', { name: /blue/i });
+  const checkboxElement = screen.getByRole('checkbox', {
+    name: /disable button/i,
+  });
+
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toHaveStyle({
+    'background-color': 'rgb(128, 128, 128)',
+  });
+
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toHaveStyle({ 'background-color': 'rgb(255, 0, 0)' });
+});
+
+test('checkbox flow after button click', () => {
+  render(<App />);
+
+  const buttonElement = screen.getByRole('button', { name: /blue/i });
+  const checkboxElement = screen.getByRole('checkbox', {
+    name: /disable button/i,
+  });
+
+  fireEvent.click(buttonElement);
+
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toBeDisabled();
+  expect(buttonElement).toHaveClass('gray');
+
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toBeEnabled();
+  expect(buttonElement).toHaveClass('blue');
+});
