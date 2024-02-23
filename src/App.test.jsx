@@ -15,8 +15,5 @@ test('button click flow', () => {
 
   expect(buttonElement).toHaveTextContent(/red/i);
   expect(buttonElement).toHaveClass('blue');
+  expect(buttonElement).toHaveStyle({ 'background-color': 'rgb(0, 0, 255)' });
 });
-
-test('button has correct label and color after click', () => {});
-
-test('button has correct text after click', () => {});
