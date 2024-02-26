@@ -4,8 +4,6 @@ export function kebabCaseToTitleCase(colorName) {
     match.toUpperCase()
   );
 
-  console.log(colorWithCaps);
-
   return colorWithCaps;
 }
 
